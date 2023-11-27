@@ -28,10 +28,11 @@ while True:
     maxValRed = 0
     maxLocRed = (0,0)
     # Loop through all pixels
+    newFrame = frame/3
     for x in range(width):
         for y in range(height):
             # Get pixel value
-            pixel = frame[y,x]
+            pixel = newFrame[y,x]
             # Calculate brightness
             brightness = pixel[0] + pixel[1] + pixel[2]
             # Check if brightest pixel
@@ -39,7 +40,7 @@ while True:
                 maxVal = brightness
                 maxLoc = (x,y)
             # Calculate redness
-            redness = pixel[2] - pixel[0] - pixel[1]
+            redness = (pixel[2] - pixel[0]) + (pixel[2] - pixel[1])
             # Check if reddest pixel
             if redness > maxValRed:
                 maxValRed = redness
